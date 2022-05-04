@@ -1,0 +1,25 @@
+<div class="card" style="width: 25rem;">
+  <img [src]="([produto1.imagem])" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">{{produto1.nomeDoProduto}} </h5>
+    <p class="card-text">{{produto1.descricao}}</p>
+<!-- --------------------- usando o NG class e o *nIf--------------------- -->
+    <h3 [ngClass]="{'text-muted riscado':produto1.emPromocao}"  class="text-success">{{produto1.preco | currency:"BRL"}}</h3>
+
+    <div *ngIf="produto1.emPromocao">
+      <h3 class="text-success">{{precoDesconto() | currency:"BRL"}} </h3>
+      <h3>
+        <span [ngStyle]="{'font-family': 'monospace'}" class="badge bg-success"> {{produto1.desconto | percent}} OFF </span>
+      </h3>
+    </div>
+    <div [ngSwitch]="produto1.categoria">
+      <span class="badge bg-success" *ngSwitchCase="'eletro'">Eletronicos</span>
+      <span class="badge bg-warning" *ngSwitchCase="'moveis'">Moveis</span>
+      <span class="badge bg-danger" *ngSwitchCase="'limpeza'">Limpeza</span>
+      <span class="badge bg-dark" *ngSwitchCaseDefault=>Categoria desconhecida</span>
+    </div>
+    <a href="#" class="btn btn-primary">Comprar</a>
+  </div>
+</div>
+
+<!-- ngIf, ngFor, ngSwitch,  -->

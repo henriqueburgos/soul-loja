@@ -1,0 +1,16 @@
+<div class="container-fluid bg-dark text-light py-2 ">
+    <h3>{{slogan}}</h3>
+    <p>{{endereco}} </p>
+    <button class="btn" (click)="onOculto()" [ngClass]="{'btn-primary': oculto,'btn-danger':!oculto}"> {{callToAction}}</button>
+
+    <ul *ngIf="!oculto;else mensagem" class="py-3">
+        <li *ngFor="let destaques of destaques; index as i">
+            #{{i+1}} - {{destaques}}
+        </li>
+    </ul>
+    <ng-template #mensagem>
+        <br>
+        <Small class="text-muted">
+            Voce pode clilcar no botao para ver os destaques
+        </Small>
+    </ng-template>
